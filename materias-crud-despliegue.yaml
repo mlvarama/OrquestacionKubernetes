@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: materias-crud
+  labels:
+    app: materias-crud-front
+spec:
+  selector:
+    matchLabels:
+      app: materias-crud-front
+      tier: materias-crud
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        app: materias-crud-front
+        tier: materias-crud
+    spec:
+      containers:
+        - name: materias-crud
+          image: leovarama/reticula:1.0
+          ports:
+            - containerPort: 8080
